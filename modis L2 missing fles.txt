@@ -1,0 +1,12 @@
+downloaded =  list(glob.glob(r'MYD*.hdf'))
+total = pd.read_excel(r'C:\Users\IITM\Desktop\MODIS_10KM_2022.xlsx')
+total['File_Name'][1][76:119]
+fl = []
+for i in np.arange(0,len(total['File_Name'])):
+    fl.append(total['File_Name'][i][76:120])
+    
+print(fl[0])
+print(downloaded[0])
+missing = np.setdiff1d(fl, downloaded)
+missing = pd.Series(missing)
+missing.to_excel('missing_MODIS_10KM_L2.xlsx')
